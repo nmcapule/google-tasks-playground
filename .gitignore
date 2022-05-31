@@ -1,0 +1,4 @@
+bin/
+pkg/
+**/credentials.json
+**/token.json
