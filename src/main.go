@@ -104,6 +104,13 @@ func main() {
 	if len(r.Items) > 0 {
 		for _, i := range r.Items {
 			fmt.Printf("%s (%s)\n", i.Title, i.Id)
+			tasks, err := srv.Tasks.List(i.Id).Do()
+			if err != nil {
+				log.Fatal(err)
+			}
+			for _, t := range tasks.Items {
+				fmt.Printf("- %s: %+v\n", t.Title, t)
+			}
 		}
 	} else {
 		fmt.Print("No task lists found.")
